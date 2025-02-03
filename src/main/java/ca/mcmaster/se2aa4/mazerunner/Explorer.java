@@ -52,8 +52,27 @@ public abstract class Explorer {
         path[moveNum] = 'F';
         moveNum++;
     }
-    private String FactorizePath(char[][] path){
-        return "";
+    public String FactorizePath(String path){
+        String factorizedPath = "";
+        char recent = ' ';
+        int counter = 1;
+
+        for (int i=0; i<path.length(); i++)
+        {
+            if (path.charAt(i) == recent){
+                counter++;
+            }
+            else{
+                if(counter > 1) factorizedPath = factorizedPath + counter + recent;
+                else factorizedPath += recent;
+                counter = 1;
+                recent = path.charAt(i);
+            }
+        }
+        if(counter > 1) factorizedPath = factorizedPath + counter + recent;
+        else factorizedPath += recent;
+
+        return factorizedPath;
     }
 
     abstract void exploreMaze(Maze maze);
