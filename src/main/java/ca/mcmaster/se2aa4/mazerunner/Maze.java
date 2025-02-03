@@ -3,20 +3,55 @@ package ca.mcmaster.se2aa4.mazerunner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.commons.cli.*;
 
 public abstract class Maze {
         private char maze[][];
+        private static final Logger logger = LogManager.getLogger();
 
         public Maze(String mazeFile){
-            FileReader reader = new FileReader(mazeFile);
-            this.maze = LoadMaze(reader);
+            try{
+                //resizing array to match the file
+                BufferedReader reader = new BufferedReader(new FileReader(mazeFile)); 
+                int lines = 0, length = reader.readLine().length();
+
+                while (reader.readLine() != null) lines++;
+                maze = new char[lines+1][length];
+                reader.close();
+
+                LoadMaze(mazeFile);
+            }catch(IOException e){
+                logger.error("Error reading maze file");
+            }
+
         }
         //loads maze from file to 2d array
-        private char[][] LoadMaze(FileReader reader){
-            return maze;
+        private void LoadMaze(String mazeFile)
+        {
+            try{
+                BufferedReader reader = new BufferedReader(new FileReader(mazeFile));
+                String line;
+
+                for (int i=0; i<maze.length; i++)
+                {
+                    line = reader.readLine();
+                    for (int j = 0; j < line.length(); j++) {
+                        if (line.charAt(j) == '#') {
+                            maze[i][j] = '#';
+                        } else if (line.charAt(j) == ' ') {
+                            maze[i][j] = ' ';
+                        }
+                    }
+                }
+                //PrintMaze();
+                reader.close();
+            }catch(IOException e){
+                logger.error("Error reading maze file");
+            }
         }
         
         char[][] GetMaze(){

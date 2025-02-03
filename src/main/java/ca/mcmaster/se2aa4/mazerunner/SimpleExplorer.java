@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.commons.cli.*;
 
 public  class SimpleExplorer extends Explorer {
-        @override
-        public exploreMaze(Maze maze){
-            
+        @Override
+        public void exploreMaze(Maze maze){
+
         }
     }

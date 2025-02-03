@@ -13,12 +13,14 @@ public class SimpleMaze extends Maze {
         public SimpleMaze(String mazeFile){
             super(mazeFile);
         }
-        @override
+        @Override
         public int[] GetStart(){
-        
+            int a[] = {1};
+            return a;
         }
-        @override
+        @Override
         public int[] GetFinish(){
-
+            int a[] = {1};
+            return a;
         }
     }

@@ -29,7 +29,7 @@ public abstract class Explorer {
             dir[1] = 0;
         }
 
-        path[moveNum] = "R";
+        path[moveNum] = 'R';
         moveNum++;
     }
     private void TurnLeft(){
@@ -42,15 +42,18 @@ public abstract class Explorer {
             dir[0] = 0;
         }
 
-        path[moveNum] = "L";
+        path[moveNum] = 'L';
         moveNum++;
     }
     private void MoveForward(){
         pos[0] += dir[0];
         pos[1] += dir[1];
 
-        path[moveNum] = "F";
+        path[moveNum] = 'F';
         moveNum++;
+    }
+    private String FactorizePath(char[][] path){
+        return "";
     }
 
     abstract void exploreMaze(Maze maze);

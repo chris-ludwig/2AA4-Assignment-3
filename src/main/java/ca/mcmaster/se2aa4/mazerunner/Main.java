@@ -24,18 +24,7 @@ public class Main {
             String mazeFile = cmd.getOptionValue("i");
 
             logger.trace("**** Reading the maze from file " + mazeFile);
-            BufferedReader reader = new BufferedReader(new FileReader(mazeFile));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                for (int idx = 0; idx < line.length(); idx++) {
-                    if (line.charAt(idx) == '#') {
-                        System.out.print("WALL ");
-                    } else if (line.charAt(idx) == ' ') {
-                        System.out.print("PASS ");
-                    }
-                }
-                System.out.print(System.lineSeparator());
-            }
+            SimpleMaze maze = new SimpleMaze(mazeFile);
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\");
         }
