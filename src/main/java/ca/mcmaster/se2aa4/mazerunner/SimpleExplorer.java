@@ -9,7 +9,7 @@ import org.apache.commons.cli.*;
 
 public  class SimpleExplorer extends Explorer {
         @Override
-        public void exploreMaze(Maze maze){
-
+        public boolean exploreMaze(Maze maze, int[] start, int[] finish){
+            return false;
         }
     }

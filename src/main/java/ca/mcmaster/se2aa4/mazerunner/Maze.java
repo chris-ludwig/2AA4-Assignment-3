@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.commons.cli.*;
 
 public abstract class Maze {
-        private char maze[][];
+        protected char maze[][];
         private static final Logger logger = LogManager.getLogger();
 
         public Maze(String mazeFile){
@@ -33,6 +33,7 @@ public abstract class Maze {
         private void LoadMaze(String mazeFile)
         {
             try{
+                //read through the file and copy components into array
                 BufferedReader reader = new BufferedReader(new FileReader(mazeFile));
                 String line;
 
@@ -47,10 +48,18 @@ public abstract class Maze {
                         }
                     }
                 }
-                //PrintMaze();
+                PrintMaze();
                 reader.close();
             }catch(IOException e){
                 logger.error("Error reading maze file");
+            }
+        }
+        private void PrintMaze(){
+            for(int i=0; i<maze.length; i++){
+                for (int j=0; j<maze[i].length; j++){
+                    System.out.print(maze[i][j]);
+                }
+                System.out.println("\n");
             }
         }
         

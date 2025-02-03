@@ -17,14 +17,26 @@ public class Main {
             //defining flag
             Options options = new Options();
             options.addOption("i", true, "Maze");
+            options.addOption("p", true, "Path");
 
             //reading file path
             CommandLineParser parser = new DefaultParser();
             CommandLine cmd = parser.parse(options, args);
             String mazeFile = cmd.getOptionValue("i");
+            String path = cmd.getOptionValue("p");
 
             logger.trace("**** Reading the maze from file " + mazeFile);
             SimpleMaze maze = new SimpleMaze(mazeFile);
+            if (path != null){
+                TestExplorer testExplorer = new TestExplorer();
+                //testing if path works from either entrance
+                if(testExplorer.exploreMaze(maze, maze.GetStart(), maze.GetFinish(), path) || testExplorer.exploreMaze(maze, maze.GetFinish(), maze.GetStart(), path)){
+                    System.out.println(path + " is a valid path to reach the end of the maze.");
+                }
+                else{
+                    System.out.println(path + " is not a valid path to reach the end of the maze.");
+                }
+            }
         } catch(Exception e) {
             logger.error("/!\\ An error has occured /!\\");
         }
