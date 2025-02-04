@@ -8,15 +8,14 @@ import org.apache.logging.log4j.Logger;
 import org.apache.commons.cli.*;
 
 public abstract class Explorer {
-    protected char[] path;//where moves will be stored
+    protected String path = "";//where moves will be stored
     protected int[] pos = {0,0};//explorer position
     protected int[] dir;//west = [0, -1], north = [-1,0], east = [0,1], south = [1,0]
-    private int moveNum = 0;//number of moves
     
     protected boolean checkWin(int[] destination){
         return pos[0] == destination[0] && pos[1] == destination[1];
     }
-    public char[] getPath(){
+    public String getPath(){
         return path;
     }
     //define movement of explorer
@@ -31,8 +30,7 @@ public abstract class Explorer {
         }
 
         if(tracking){
-            path[moveNum] = 'R';
-            moveNum++;
+            path += 'R';
         }
     }
     protected void TurnLeft(boolean tracking){
@@ -46,8 +44,7 @@ public abstract class Explorer {
         }
 
         if(tracking){
-            path[moveNum] = 'L';
-            moveNum++;
+            path += 'L';
         }
     }
     protected void MoveForward(boolean tracking){
@@ -55,8 +52,7 @@ public abstract class Explorer {
         pos[1] += dir[1];
 
         if(tracking){
-            path[moveNum] = 'F';
-            moveNum++;
+            path += 'F';
         }
     }
 
@@ -88,9 +84,37 @@ public abstract class Explorer {
         return factorizedPath;
     }
     //take factorized path and expand into instructions
-    protected String UnfactorizePath(String path){//turn 3L into R and 3R into L maybe
-        return "uhuh";
+    protected String UnfactorizePath(String path){
+        StringBuilder result = new StringBuilder();
+        int i = 0;
+
+        while (i < path.length()) {
+            char currentChar = path.charAt(i);
+
+            if (currentChar >= '2' && currentChar <= '9') { 
+                // If the character is a digit between 2-9, get the next character and repeat it
+                if (i + 1 < path.length()) { 
+                    char toRepeat = path.charAt(i + 1);
+                    int repeatCount = Character.getNumericValue(currentChar);
+
+                    // Append the character 'repeatCount' times
+                    result.append(String.valueOf(toRepeat).repeat(repeatCount));
+
+                    i += 2; // Move past the number and the character
+                } else {
+                    //invalid input
+                    throw new IllegalArgumentException("Invalid input format: number at end of string");
+                }
+            } else {
+                //if character just add it normally
+                result.append(currentChar);
+                i++;
+            }
+        }
+
+        return result.toString();
     }
+    
 
     public abstract boolean exploreMaze(Maze maze, int[] start, int[] finish);
 }

@@ -66,10 +66,6 @@ public abstract class Maze {
         char[][] GetMaze(){
             return maze;
         }
-        //checks if path is valid solution to maze
-        boolean IsValidPath(String path){
-            return false;
-        }
 
         //returns start and finsh of each maze
         abstract int[] GetStart();

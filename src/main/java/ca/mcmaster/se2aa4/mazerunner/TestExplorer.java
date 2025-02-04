@@ -16,14 +16,15 @@ public class TestExplorer extends Explorer {
         public boolean exploreMaze(Maze maze, int[] start, int finish[], String path)
         {
             //initialize instructions and explorer
-            //path = UnfactorizePath(path); to be done later
+            path = UnfactorizePath(path);
             pos = start;
-            int[] east = {0,1}, west = {0,-1};
+            int[] east = {0,1}, west = {0,-1}, north = {-1, 0}, south = {1,0};
 
-            //initialize directions, make avaialable for north and south too
+            //initialize directions
             if(pos[1] == 0) dir = east;
-            else dir = west;
-            int[] destination = finish;
+            else if (pos[1] == maze.GetMaze()[0].length-1) dir = west;
+            else if (pos[0] == 0) dir = south;
+            else dir = north;
 
             //iterate through instructions and execute
             for (int i=0; i<path.length(); i++){
@@ -37,6 +38,6 @@ public class TestExplorer extends Explorer {
 
                 if (maze.GetMaze()[pos[0]][pos[1]] == '#') return false;//ran into wall
             }
-            return checkWin(destination);
+            return checkWin(finish);
         }
     }
