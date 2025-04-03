@@ -9,11 +9,11 @@ import org.apache.commons.cli.*;
 
 public class TestExplorer extends Explorer {
         @Override
-        public boolean exploreMaze(Maze maze, int[] start, int[] finish) {
+        public void exploreMaze(Maze maze, int[] start, int[] finish) {
             // Call the main method with a default path
-            return exploreMaze(maze, start, finish, null);
+            exploreMaze(maze, start, finish, null);
         }
-        public boolean exploreMaze(Maze maze, int[] start, int finish[], String path)
+        public void exploreMaze(Maze maze, int[] start, int finish[], String path)
         {
             //initialize instructions and explorer
             path = UnfactorizePath(path);
@@ -32,12 +32,15 @@ public class TestExplorer extends Explorer {
                 else if(path.charAt(i) == 'L') TurnLeft(false);
                 else if(path.charAt(i) == 'F'){
                     MoveForward(false);
-                    if(pos[1] < 0 || pos[1] >= maze.GetMaze()[0].length) return false;// exited the bounds of the maze(add checking for north and south)
+                    if(pos[1] < 0 || pos[1] >= maze.GetMaze()[0].length || pos[0] < 0 || pos[0] >= maze.GetMaze().length) break;// exited the bounds of the maze
                 }
-                else return false;//invalid instruction
+                else break;//invalid instruction
 
-                if (maze.GetMaze()[pos[0]][pos[1]] == '#') return false;//ran into wall
+                if (maze.GetMaze()[pos[0]][pos[1]] == '#') break;//ran into wall
             }
-            return checkWin(finish);
+            checkWin(finish);
+        }
+        public ModelResult getData(){
+            return new TestResult(exitFound);
         }
     }

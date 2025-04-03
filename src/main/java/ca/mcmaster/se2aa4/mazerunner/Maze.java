@@ -13,7 +13,9 @@ public abstract class Maze {
         protected char maze[][];
         private static final Logger logger = LogManager.getLogger();
 
-        public Maze(String mazeFile){
+        //loads maze from file to 2d array
+        public void LoadMaze(String mazeFile)
+        {
             try{
                 //resizing array to match the file
                 BufferedReader reader = new BufferedReader(new FileReader(mazeFile)); 
@@ -21,20 +23,10 @@ public abstract class Maze {
 
                 while (reader.readLine() != null) lines++;
                 maze = new char[lines+1][length];
+
                 reader.close();
+                reader = new BufferedReader(new FileReader(mazeFile));
 
-                LoadMaze(mazeFile);
-            }catch(IOException e){
-                logger.error("Error reading maze file");
-            }
-
-        }
-        //loads maze from file to 2d array
-        private void LoadMaze(String mazeFile)
-        {
-            try{
-                //read through the file and copy components into array
-                BufferedReader reader = new BufferedReader(new FileReader(mazeFile));
                 String line;
 
                 for (int i=0; i<maze.length; i++)

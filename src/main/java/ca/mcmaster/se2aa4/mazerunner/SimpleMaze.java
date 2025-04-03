@@ -8,10 +8,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.commons.cli.*;
 
 public class SimpleMaze extends Maze {
-
-        public SimpleMaze(String mazeFile){
-            super(mazeFile);
-        }
         @Override
         public int[] GetStart()
         {

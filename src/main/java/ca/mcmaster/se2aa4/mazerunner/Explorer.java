@@ -7,17 +7,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.commons.cli.*;
 
-public abstract class Explorer {
+public abstract class Explorer implements Model{
     protected String path = "";//where moves will be stored
     protected int[] pos = {0,0};//explorer position
     protected int[] dir;//west = [0, -1], north = [-1,0], east = [0,1], south = [1,0]
+    protected boolean exitFound;
     
-    protected boolean checkWin(int[] destination){
-        return pos[0] == destination[0] && pos[1] == destination[1];
+    protected void checkWin(int[] destination){
+        exitFound = pos[0] == destination[0] && pos[1] == destination[1];
     }
-    public String getPath(){
-        return path;
-    }
+
     //define movement of explorer
     protected void TurnRight(boolean tracking){
         if(dir[0] == 0){
@@ -116,5 +115,5 @@ public abstract class Explorer {
     }
     
 
-    public abstract boolean exploreMaze(Maze maze, int[] start, int[] finish);
+    public abstract void exploreMaze(Maze maze, int[] start, int[] finish);
 }
