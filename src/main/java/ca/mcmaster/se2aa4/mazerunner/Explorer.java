@@ -107,8 +107,9 @@ public abstract class Explorer implements Model{
         return result.toString();
     }
 
-    protected void setPos(int[] pos){//needed for testing
+    protected void setPos(int[] pos, int[] dir){//needed for testing
         this.pos = pos;
+        this.dir = dir;
     }
     
 

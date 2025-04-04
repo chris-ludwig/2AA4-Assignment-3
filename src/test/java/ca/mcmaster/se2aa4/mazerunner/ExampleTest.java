@@ -44,7 +44,7 @@ public class ExampleTest {
         assertTrue(Arrays.equals(maze.GetFinish(), new int[] {2, 4}));
 
         //testing movements
-        se.setPos(new int[] {0, 0});
+        se.setPos(new int[] {0, 0}, new int[] {0, 1});
         se.MoveForward(true);
         se.TurnRight(true);
         se.MoveForward(true);
