@@ -51,7 +51,7 @@ public abstract class Explorer implements Model{
     //condense path down into factorized form
     protected String FactorizePath(String path){
         String factorizedPath = "";
-        char recent = ' ';
+        char recent = '\0';
         int counter = 1;
         //iterate thru path
         for (int i=0; i<path.length(); i++)

@@ -6,14 +6,8 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExampleTest {
-
     public static void main(String[] args){
-        SimpleMaze maze = new SimpleMaze();
-        maze.LoadMaze("examples/straight.maz.txt");
-        System.out.println(Arrays.deepToString(maze.GetMaze()));
-        if(maze.GetMaze()[2][0] == '\0'){
-            System.out.println("fuck me");
-        }
+
     }
     
     @Test
