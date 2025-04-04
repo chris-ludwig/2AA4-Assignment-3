@@ -55,6 +55,7 @@ public class ExampleTest {
        */ 
 
         //test solving a maze
+        se = new SimpleExplorer();
         c = new CommandSolveMaze(se, maze, "examples/straight.maz.txt");
         c.execute();
         assertTrue(se.getData().getDisplayString().equals("4F"));
