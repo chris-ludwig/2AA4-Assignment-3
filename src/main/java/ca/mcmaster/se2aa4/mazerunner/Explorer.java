@@ -63,7 +63,7 @@ public abstract class Explorer implements Model{
             else{
                 //adding factorized instruction to the rest of path
                 if(counter > 1) factorizedPath = factorizedPath + counter + recent;
-                else factorizedPath += recent;
+                else if(recent != '\0') factorizedPath += recent;
                 //resetting counter and recent
                 counter = 1;
                 recent = path.charAt(i);

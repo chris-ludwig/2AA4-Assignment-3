@@ -1,15 +1,13 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayNameGenerator.Simple;
+
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ExampleTest {
-    public static void main(String[] args){
-
-    }
-    
+public class ExampleTest {    
     @Test
     public void sampleTest(){
         HelpCLI hc = new HelpCLI();
@@ -51,8 +49,6 @@ public class ExampleTest {
         se.checkWin(new int[] {2,2});
         assertTrue(se.exitFound);
         assertTrue(se.getData().getDisplayString().equals("FR3FLFLF"));
-
-
 
       /*
        * Testing commands and results
