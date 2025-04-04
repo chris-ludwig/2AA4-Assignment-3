@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ExampleTest {    
+public class ExampleTest {
     @Test
     public void sampleTest(){
         HelpCLI hc = new HelpCLI();
@@ -60,7 +60,7 @@ public class ExampleTest {
         assertTrue(se.getData().getDisplayString().equals("4F"));
 
         //test path testing
-        c = new CommandTestPath(te, "path", maze, "examples/straight.maz.txt");
+        c = new CommandTestPath(te, "FFFF", maze, "examples/straight.maz.txt");
         c.execute();
         assertTrue(te.getData().getDisplayString().equals("correct"));
         c = new CommandTestPath(te, "LLF", maze, "examples/straight.maz.txt");
