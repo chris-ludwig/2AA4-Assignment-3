@@ -106,7 +106,11 @@ public abstract class Explorer implements Model{
 
         return result.toString();
     }
+
+    protected void setPos(int[] pos){//needed for testing
+        this.pos = pos;
+    }
     
 
-    public abstract void exploreMaze(Maze maze, int[] start, int[] finish);
+    public abstract void exploreMaze(Maze maze);
 }

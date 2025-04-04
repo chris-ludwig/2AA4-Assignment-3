@@ -13,6 +13,6 @@ public class CommandSolveMaze implements Command {//command to solve a maze
 
     public void execute(){
         maze.LoadMaze(mazeFile);
-        explorer.exploreMaze(maze, maze.GetStart(), maze.GetFinish());
+        explorer.exploreMaze(maze);
     }
 }

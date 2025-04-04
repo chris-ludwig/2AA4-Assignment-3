@@ -15,6 +15,6 @@ public class CommandTestPath implements Command {//command to test if path is va
 
     public void execute(){
         maze.LoadMaze(mazeFile);
-        te.exploreMaze(maze, maze.GetStart(), maze.GetFinish(), path);
+        te.exploreMaze(maze, path);
     }
 }

@@ -38,7 +38,7 @@ public abstract class Maze {//defines basic functionalities needed for all mazes
                         }
                     }
                 }
-                PrintMaze();
+                PrintMaze();//move this to view
                 reader.close();
             }catch(IOException e){
                 logger.error("Error reading maze file");

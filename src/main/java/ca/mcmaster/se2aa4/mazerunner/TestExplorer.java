@@ -2,15 +2,15 @@ package ca.mcmaster.se2aa4.mazerunner;
 
 public class TestExplorer extends Explorer {
         @Override
-        public void exploreMaze(Maze maze, int[] start, int[] finish) {
+        public void exploreMaze(Maze maze) {
             // Call the main method with a default path
-            exploreMaze(maze, start, finish, null);
+            exploreMaze(maze,null);
         }
-        public void exploreMaze(Maze maze, int[] start, int finish[], String path)
+        public void exploreMaze(Maze maze, String path)
         {
             //initialize instructions and explorer
             path = UnfactorizePath(path);
-            pos = start;
+            pos = maze.GetStart();
             int[] east = {0,1}, west = {0,-1}, north = {-1, 0}, south = {1,0};
 
             //initialize directions
@@ -31,7 +31,7 @@ public class TestExplorer extends Explorer {
 
                 if (maze.GetMaze()[pos[0]][pos[1]] == '#') break;//ran into wall
             }
-            checkWin(finish);
+            checkWin(maze.GetFinish());
         }
         public ModelResult getData(){
             return new TestResult(exitFound);

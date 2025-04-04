@@ -3,8 +3,8 @@ package ca.mcmaster.se2aa4.mazerunner;
 public  class SimpleExplorer extends Explorer{
         private String data;
         @Override
-        public void exploreMaze(Maze maze, int[] start, int[] finish){
-            pos[0] = start[0]; pos[1] = start[1];
+        public void exploreMaze(Maze maze){
+            pos = maze.GetStart();
             int[] east = {0,1}, west = {0,-1};
 
             //initialize directions, make avaialable for north and south too
@@ -49,8 +49,8 @@ public  class SimpleExplorer extends Explorer{
                         TurnLeft(true);
                     }
                 }
-                checkWin(finish);
-                if(pos[0] == start[0] && pos[1] == start[1]) break;//went in loop, maze is impossible
+                checkWin(maze.GetFinish());
+                if(pos[0] == maze.GetStart()[0] && pos[1] == maze.GetStart()[1]) break;//went in loop, maze is impossible
             }
         }
 

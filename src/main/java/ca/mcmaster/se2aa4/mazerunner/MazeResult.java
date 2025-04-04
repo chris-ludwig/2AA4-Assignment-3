@@ -7,8 +7,7 @@ public class MazeResult implements ModelResult{//Result from solving a maze
         this.path = path;
     }
     @Override
-    public String getDisplayString() {
-        
+    public String getDisplayString() {//add option for no maze printing
         return path;
     }
 }
