@@ -1,6 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class MazeResult implements ModelResult{
+public class MazeResult implements ModelResult{//Result from solving a maze
     private String path;
 
     public MazeResult(String path){

@@ -1,15 +1,13 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.commons.cli.*;
 
-public abstract class Maze {
+public abstract class Maze {//defines basic functionalities needed for all mazes
         protected char maze[][];
         private static final Logger logger = LogManager.getLogger();
 

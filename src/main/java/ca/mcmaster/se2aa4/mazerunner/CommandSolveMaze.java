@@ -1,6 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class CommandSolveMaze implements Command {
+public class CommandSolveMaze implements Command {//command to solve a maze
     Maze maze;
     Explorer explorer;
     String mazeFile;
@@ -10,7 +10,7 @@ public class CommandSolveMaze implements Command {
         this.maze = maze;
         this.explorer = explorer;
     }
-    
+
     public void execute(){
         maze.LoadMaze(mazeFile);
         explorer.exploreMaze(maze, maze.GetStart(), maze.GetFinish());

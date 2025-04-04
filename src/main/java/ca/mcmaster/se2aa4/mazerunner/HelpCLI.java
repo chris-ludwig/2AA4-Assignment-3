@@ -3,7 +3,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 public class HelpCLI implements Model{
     private ModelResult result;
 
-    public void help(){
+    public void help(){//output is help string
         result = new HelpResult("""
                 Usage: java -jar mazerunner.jar -i <maze_file> [-p <path>]
                 
@@ -36,7 +36,7 @@ public class HelpCLI implements Model{
                 """  
         );
     }
-    public void usage(){
+    public void usage(){//output is usage string
         result = new HelpResult("Usage: java -jar mazerunner.jar -i <maze_file> [-p <path>]");
     }
 

@@ -1,6 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class CommandTestPath implements Command {
+public class CommandTestPath implements Command {//command to test if path is valid
     TestExplorer te;
     String path;
     Maze maze;
