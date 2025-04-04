@@ -6,6 +6,15 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExampleTest {
+
+    public static void main(String[] args){
+        SimpleMaze maze = new SimpleMaze();
+        maze.LoadMaze("examples/straight.maz.txt");
+        System.out.println(Arrays.deepToString(maze.GetMaze()));
+        if(maze.GetMaze()[2][0] == '\0'){
+            System.out.println("fuck me");
+        }
+    }
     
     @Test
     public void sampleTest(){
@@ -22,12 +31,13 @@ public class ExampleTest {
 
         //test load maze
         maze.LoadMaze("examples/straight.maz.txt");
-        assertTrue(Arrays.deepEquals(maze.GetMaze(), new char[][] {
+        System.out.println(maze.GetMaze());
+        assertTrue(Arrays.deepToString(maze.GetMaze()).equals(Arrays.deepToString(new char[][] {
             {'#', '#', '#', '#', '#'},
             {'#', '#', '#', '#', '#'},
             {' ', ' ', ' ', ' ', ' '},
             {'#', '#', '#', '#', '#'},
-            {'#', '#', '#', '#', '#'}}));
+            {'#', '#', '#', '#', '#'}})));
         
         //test get start and get finish
         assertTrue(Arrays.equals(maze.GetStart(), new int[] {2, 0}));

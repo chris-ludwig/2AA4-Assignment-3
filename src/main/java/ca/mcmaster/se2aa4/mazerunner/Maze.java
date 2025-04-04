@@ -35,6 +35,15 @@ public abstract class Maze {//defines basic functionalities needed for all mazes
                             maze[i][j] = '#';
                         } else if (line.charAt(j) == ' ') {
                             maze[i][j] = ' ';
+                        } else if (line.charAt(j) == '\n') {//empty line, fill with spaces
+                            for(int k = j; k < line.length(); k++){
+                                maze[i][k] = ' ';
+                            }
+                            j=line.length();//break the loop
+                        }
+                        else{
+                            System.out.println("Unexpected Character in Maze File");
+                            System.exit(-1);
                         }
                     }
                 }
