@@ -13,7 +13,6 @@ public class Controller {//handles input and passes information to output
         Command command;
         View view = new View();
 
-        logger.info("** Starting Maze Runner");
         try {
             //defining flag
             Options options = new Options();
@@ -64,7 +63,5 @@ public class Controller {//handles input and passes information to output
         } catch(Exception e) {
           logger.error("/!\\ An error has occured /!\\");
         }
-        logger.trace("**** Computing path");
-        logger.info("** End of MazeRunner");
     }
 }

@@ -3,7 +3,7 @@ package ca.mcmaster.se2aa4.mazerunner;
 public abstract class Explorer implements Model{
     protected String path = "";//where moves will be stored
     protected int[] pos = {0,0};//explorer position
-    protected int[] dir;//west = [0, -1], north = [-1,0], east = [0,1], south = [1,0]
+    protected Direction dir;//west = [0, -1], north = [-1,0], east = [0,1], south = [1,0]
     protected boolean exitFound;
     
     protected void checkWin(int[] destination){
@@ -12,13 +12,11 @@ public abstract class Explorer implements Model{
 
     //define movement of explorer
     protected void TurnRight(boolean tracking){
-        if(dir[0] == 0){
-            dir[0] = dir[1];
-            dir[1] = 0;
+        if(dir.toVector()[0] == 0){
+            dir = Direction.fromVector(new int[]{dir.toVector()[1], 0});
         }
         else{
-            dir[1] = -dir[0];
-            dir[0] = 0;
+            dir = Direction.fromVector(new int[]{0, -dir.toVector()[0]});
         }
 
         if(tracking){
@@ -26,13 +24,11 @@ public abstract class Explorer implements Model{
         }
     }
     protected void TurnLeft(boolean tracking){
-        if(dir[1] == 0){
-            dir[1] = dir[0];
-            dir[0] = 0;
+        if(dir.toVector()[1] == 0){
+            dir = Direction.fromVector(new int[]{0, dir.toVector()[0]});
         }
         else{
-            dir[0] = -dir[1];
-            dir[1] = 0;
+            dir = Direction.fromVector(new int[]{-dir.toVector()[1], 0});
         }
 
         if(tracking){
@@ -40,8 +36,8 @@ public abstract class Explorer implements Model{
         }
     }
     protected void MoveForward(boolean tracking){
-        pos[0] += dir[0];
-        pos[1] += dir[1];
+        pos[0] += dir.toVector()[0];
+        pos[1] += dir.toVector()[1];
 
         if(tracking){
             path += 'F';
@@ -109,7 +105,7 @@ public abstract class Explorer implements Model{
 
     protected void setPos(int[] pos, int[] dir){//needed for testing
         this.pos = pos;
-        this.dir = dir;
+        this.dir = Direction.fromVector(dir);
     }
     
 

@@ -47,19 +47,20 @@ public abstract class Maze {//defines basic functionalities needed for all mazes
                         }
                     }
                 }
-                PrintMaze();//move this to view
                 reader.close();
             }catch(IOException e){
                 logger.error("Error reading maze file");
             }
         }
-        private void PrintMaze(){
+        public String GetMazeString(){
+            String mazeString = "";
             for(int i=0; i<maze.length; i++){
                 for (int j=0; j<maze[i].length; j++){
-                    System.out.print(maze[i][j]);
+                    mazeString += maze[i][j];
                 }
-                System.out.println("\n");
+               mazeString += "\n";
             }
+            return mazeString;
         }
         
         char[][] GetMaze(){
